@@ -3,7 +3,7 @@
 class Algorithm
 {
 private:
-	Workspace ws;
+	Workspace *ws;
 public:
 	virtual void preempt() = 0;
 	virtual void stop() = 0;

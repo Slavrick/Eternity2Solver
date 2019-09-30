@@ -4,7 +4,7 @@
 class Analysis
 {
 private:
-	Workspace ws;
+	Workspace *ws;
 public:
 	Analysis();
 	~Analysis();

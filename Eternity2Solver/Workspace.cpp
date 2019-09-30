@@ -2,7 +2,7 @@
 
 
 
-Workspace::Workspace(int BoardLength)
+Workspace::Workspace(int boardLength)
 {
 	this->boardLength = boardLength;
 	ptrContainer = new Piece*[boardLength * boardLength];

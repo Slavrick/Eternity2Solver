@@ -6,7 +6,7 @@ class Display
 private:
 	Workspace *ws;
 public:
-	Display();
+	Display(Workspace* ws);
 	~Display();
 	void printBoard();
 	void printPieces();

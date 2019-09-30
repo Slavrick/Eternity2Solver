@@ -8,7 +8,7 @@ public:
 	Piece** boardSpace;
 	Piece** ptrContainer;
 	Piece empty;
-	Workspace(int BoardLength);
+	Workspace(int boardLength);
 	~Workspace();
 	Piece* getPieceFromBoard(int x, int y);
 	void setPiece(int x, int y, Piece* p);
