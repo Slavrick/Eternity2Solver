@@ -1,9 +1,10 @@
 #include<iostream>
+#include<string.h>
+#include<string>
 #include"Workspace.h"
 #include"Display.h"
 #include"Randomizer.h"
-#include <string.h>
-#include <string>
+#include"BoardIO.h"
 
 using namespace std;
 
@@ -17,7 +18,7 @@ void printUsage(string s, string error = "");
 void printMan();
 void handleBoardCreation(string outputfile, int numcolors, int seed = -1);
 void solveBoard(string inputfile, string outputfile, int method = 0);
-void handleAnalysis(string inputfile);
+void handleAnalysis(char* inputfile);
 int* parseForMode(int argc, char** argv);
 int getMethod(int argc, char** argv, int currArg, int currChar);
 
@@ -74,7 +75,6 @@ int main(int argc, char** argv) {
 			break;
 		case 3:
 			if (fileCount != 1) {
-				cout << fileCount;
 				printUsage(argv[0], "creation error");
 				exit(EXIT_FAILURE);
 			}
@@ -174,13 +174,26 @@ void printMan() {
 
 void handleBoardCreation(string outputfile, int numcolors, int seed) {
 	cout << "Creation entered output file specified is: " << outputfile;
+	char* null = NULL;
+	BoardIO boardOut;
+	boardOut.outputFile = outputfile.c_str();
+	Workspace* ws = new Workspace(5);
+	Randomizer r(ws);
+	r.randomizeBoard(numcolors);
+	boardOut.writeToFile(ws);
+	delete ws;
 }
 
 void solveBoard(string inputfile, string outputfile, int method) {
 	cout << "Solve Mode entered; input file specified is: " << inputfile << " and output file specified is: " << outputfile;
 }
 
-void handleAnalysis(string inputfile) {
+void handleAnalysis(char* inputfile) {
 	cout << "Analysis entered; input file specified is: " << inputfile;
+	BoardIO boardLoader(inputfile, NULL);
+	Workspace* ws = boardLoader.buildFromFile();
+	Display d(ws);
+	d.printPieces();
+	cout << endl;
 }
 
