@@ -1,0 +1,17 @@
+Flags
+
+a - analysis mode
+c - creation mode
+h - help
+s - solve mode
+
+
+L - specify board length
+A - Algorithm to use
+M - mode
+S - specify seed
+o - output file
+i - input file
+
+Otherwise, the first file is input and the second is output.
+
